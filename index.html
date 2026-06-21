@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ilias Trid — Portfolio | BUT2 Réseaux & Télécommunications</title>
+<meta name="description" content="Portfolio d'Ilias Trid, BUT2 Réseaux & Télécommunications, alternant Cloud chez Nivura (Monaco). Réseau, cloud AWS et cybersécurité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --bg:#0a0a0b;
+  --bg-soft:#0f0f11;
+  --surface:#141416;
+  --surface-2:#1b1b1e;
+  --line:rgba(255,255,255,.08);
+  --line-strong:rgba(255,210,63,.30);
+  --gold:#ffd23f;
+  --amber:#ff9e42;
+  --text:#f3f3f1;
+  --muted:#9a9aa1;
+  --grad:linear-gradient(120deg,var(--gold),var(--amber));
+  --c-reseau:#5ad1ff;
+  --c-cloud:#9d8bff;
+  --c-cyber:#ff7a7a;
+  --c-dev:#74e39b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+section{scroll-margin-top:78px}
+a{color:inherit}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:.74rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:.6rem;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--grad)}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.12;letter-spacing:-.01em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(10,10,11,.72);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:1180px;margin:0 auto;padding:.7rem 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:'Space Grotesk';font-weight:700;letter-spacing:.02em;text-decoration:none}
+.brand .mark{
+  width:34px;height:34px;border-radius:9px;background:var(--grad);color:#0a0a0b;
+  display:grid;place-items:center;font-weight:700;font-size:.95rem;flex-shrink:0;
+}
+.brand small{display:block;font-family:'JetBrains Mono';font-weight:400;font-size:.62rem;color:var(--muted);letter-spacing:.12em;margin-top:1px}
+.nav-links{display:flex;gap:.3rem;list-style:none}
+.nav-links a{
+  text-decoration:none;color:var(--muted);font-size:.92rem;font-weight:500;
+  padding:.5rem .8rem;border-radius:8px;position:relative;transition:color .2s;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.current{color:var(--gold)}
+.nav-links a.current::after{
+  content:"";position:absolute;left:.8rem;right:.8rem;bottom:.28rem;height:2px;
+  background:var(--grad);border-radius:2px;
+}
+.burger{display:none;background:none;border:none;cursor:pointer;width:42px;height:42px}
+.burger span{display:block;width:24px;height:2px;background:var(--text);margin:5px auto;border-radius:2px;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:clamp(2rem,5vw,3.6rem) 0 clamp(1.4rem,3vw,2.2rem);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(60% 60% at 78% 18%,rgba(255,158,66,.16),transparent 60%),
+    radial-gradient(50% 50% at 12% 0%,rgba(255,210,63,.12),transparent 60%),
+    linear-gradient(transparent 96%,var(--line) 0) 0 0/100% 34px,
+    linear-gradient(90deg,transparent 96%,var(--line) 0) 0 0/34px 100%;
+  -webkit-mask:linear-gradient(180deg,#000,transparent 88%);mask:linear-gradient(180deg,#000,transparent 88%);
+}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.55fr .85fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;margin:1rem 0 .2rem}
+.hero h1 .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .role{font-family:'Space Grotesk';font-size:clamp(1.05rem,2.4vw,1.4rem);font-weight:500;color:var(--text);margin-bottom:1.4rem}
+.hero .role b{color:var(--gold);font-weight:600}
+.objective{
+  border-left:2px solid;border-image:var(--grad) 1;padding:.2rem 0 .2rem 1.1rem;
+  font-size:1.05rem;color:#dededa;max-width:46ch;margin-bottom:1.1rem;
+}
+.objective b{color:var(--text);font-weight:600}
+.lead{color:var(--muted);max-width:52ch;margin-bottom:1.1rem;font-size:.98rem}
+.l3{
+  display:inline-flex;align-items:flex-start;gap:.6rem;font-size:.9rem;color:#d8d8d4;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:.7rem .9rem;max-width:50ch;margin-bottom:1.6rem;
+}
+.l3 i{color:var(--gold);margin-top:.18rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.7rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:600;
+  font-size:.95rem;padding:.72rem 1.15rem;border-radius:11px;cursor:pointer;
+  transition:transform .18s,box-shadow .25s,background .25s,color .25s,border-color .25s;
+}
+.btn-primary{background:var(--grad);color:#0a0a0b;box-shadow:0 6px 20px rgba(255,158,66,.22)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,158,66,.34)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--line-strong);color:var(--gold);transform:translateY(-2px)}
+.hero-photo{justify-self:center;position:relative}
+.hero-photo .ring{
+  width:clamp(170px,22vw,250px);aspect-ratio:1;border-radius:50%;padding:5px;background:var(--grad);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06),0 22px 60px rgba(0,0,0,.55);
+}
+.hero-photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;background:#fff;display:block}
+.hero-photo .tag{
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.06em;
+  background:var(--surface);border:1px solid var(--line-strong);color:var(--gold);
+  padding:.35rem .7rem;border-radius:999px;white-space:nowrap;
+}
+
+/* ============ STATS ============ */
+.stats{border-block:1px solid var(--line);background:var(--bg-soft)}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.stat{background:var(--bg);padding:.9rem 1rem;text-align:center}
+.stat .n{font-family:'Space Grotesk';font-size:1.8rem;font-weight:700;color:var(--gold)}
+.stat .l{font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+
+/* ============ SECTION SHELL ============ */
+.section{padding:clamp(1.6rem,3.5vw,2.6rem) 0}
+.section-head{max-width:62ch;margin-bottom:1.4rem}
+.section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin:.8rem 0 .7rem}
+.section-head p{color:var(--muted);font-size:1.02rem}
+.section.alt{background:var(--bg-soft);border-block:1px solid var(--line)}
+
+/* ============ PROJECTS ============ */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.8rem}
+.chip{
+  font-family:'JetBrains Mono';font-size:.78rem;letter-spacing:.04em;cursor:pointer;
+  background:var(--surface);border:1px solid var(--line);color:var(--muted);
+  padding:.5rem .85rem;border-radius:999px;transition:all .2s;display:inline-flex;align-items:center;gap:.45rem;
+}
+.chip:hover{color:var(--text);border-color:var(--line-strong)}
+.chip.active{background:var(--grad);color:#0a0a0b;border-color:transparent;font-weight:500}
+.chip .dot{width:8px;height:8px;border-radius:50%}
+.proj-board{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start}
+.col-head{
+  display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;padding-bottom:.7rem;
+  border-bottom:1px solid var(--line);
+}
+.col-head .ico{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line-strong);color:var(--gold)}
+.col-head h3{font-size:1.12rem;font-weight:600}
+.col-head small{font-family:'JetBrains Mono';font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+.col-stack{display:flex;flex-direction:column;gap:.75rem}
+.hidden-proj{display:none!important}
+.show-more-btn{margin-top:.5rem;font-size:.82rem;padding:.45rem .85rem;align-self:flex-start;cursor:pointer;border:1px solid var(--line-strong);background:transparent;border-radius:8px;color:var(--gold);font-weight:600;display:inline-flex;align-items:center;gap:.4rem;transition:all .2s}
+.show-more-btn:hover{background:var(--surface-2)}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;
+  transition:transform .2s,border-color .25s,box-shadow .25s;position:relative;overflow:hidden;
+}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--barc,var(--gold));opacity:.85}
+.card:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.5rem}
+.card-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag-theme{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.04em;padding:.22rem .5rem;border-radius:6px;display:inline-flex;align-items:center;gap:.35rem;background:var(--surface-2);color:var(--muted)}
+.tag-theme .dot{width:7px;height:7px;border-radius:50%}
+.sem{font-family:'JetBrains Mono';font-size:.68rem;color:#0a0a0b;background:var(--gold);padding:.18rem .5rem;border-radius:6px;font-weight:500;flex-shrink:0}
+.card h4{font-family:'Space Grotesk';font-size:1.05rem;font-weight:600;margin:.1rem 0 .45rem;line-height:1.25}
+.card p{font-size:.92rem;color:#cfcfca;margin-bottom:.7rem}
+.stack{display:flex;flex-wrap:wrap;gap:.32rem;margin-bottom:.8rem}
+.stack span{font-family:'JetBrains Mono';font-size:.68rem;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);padding:.2rem .45rem;border-radius:6px}
+.proofs{display:flex;flex-wrap:wrap;gap:.45rem}
+.proof{
+  display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:500;text-decoration:none;
+  color:var(--gold);border:1px solid var(--line-strong);padding:.35rem .65rem;border-radius:8px;transition:all .2s;
+}
+.proof:hover{background:var(--grad);color:#0a0a0b;border-color:transparent}
+.proof.muted{color:var(--muted);border-color:var(--line);cursor:default}
+.proof.muted:hover{background:transparent;color:var(--muted)}
+.proof.conf{color:#e07b7b;border-color:rgba(224,123,123,.28);background:rgba(224,123,123,.05);cursor:default;gap:.45rem}
+.proof.conf:hover{background:rgba(224,123,123,.05);color:#e07b7b;border-color:rgba(224,123,123,.28);transform:none}
+.skill-card.full{grid-column:1/-1}
+.cert-grid{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:.8rem}
+.cert-badge{display:flex;align-items:center;gap:.65rem;background:var(--surface-2);border:1px solid var(--line-strong);border-radius:11px;padding:.65rem .95rem;text-decoration:none;transition:all .2s;position:relative}
+.cert-badge:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.cert-badge .cb-icon{width:36px;height:36px;border-radius:8px;display:grid;place-items:center;font-size:.72rem;font-weight:700;font-family:'Space Grotesk';flex-shrink:0;letter-spacing:.02em}
+.cert-badge .cb-name{font-size:.85rem;font-weight:600;color:var(--text);line-height:1.25}
+.cert-badge .cb-level{font-family:'JetBrains Mono';font-size:.65rem;color:var(--muted);margin-top:.18rem}
+.cert-badge .cb-wip{position:absolute;top:-.4rem;right:-.3rem;font-family:'JetBrains Mono';font-size:.6rem;background:var(--amber);color:#0a0a0b;padding:.12rem .4rem;border-radius:999px;font-weight:600;letter-spacing:.04em}
+.col-note{font-size:.82rem;color:var(--muted);margin-top:.9rem;font-style:italic}
+
+/* ============ SKILLS ============ */
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.skill-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.25rem}
+.skill-card h3{display:flex;align-items:center;gap:.6rem;font-size:1.02rem;font-weight:600;margin-bottom:.9rem}
+.skill-card h3 i{color:var(--gold);font-size:.95rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill-tags span{font-size:.82rem;background:var(--surface-2);border:1px solid var(--line);color:#dcdcd8;padding:.35rem .6rem;border-radius:8px;transition:all .2s}
+.skill-card:hover .skill-tags span{border-color:rgba(255,210,63,.18)}
+.lang-row{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px dashed var(--line)}
+.lang-row:last-child{border-bottom:none}
+.lang-row .lv{font-family:'JetBrains Mono';font-size:.74rem;color:var(--gold)}
+
+/* ============ ALTERNANCE ============ */
+.alt-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:1.8rem;align-items:start}
+.company{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem}
+.company .logo{width:48px;height:48px;border-radius:11px;background:var(--grad);color:#0a0a0b;display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;font-size:1.3rem;margin-bottom:.8rem}
+.company h3{font-size:1.2rem;font-weight:600;margin-bottom:.2rem}
+.company .sub{font-family:'JetBrains Mono';font-size:.74rem;color:var(--muted);margin-bottom:.9rem}
+.company p{font-size:.92rem;color:#cfcfca;margin-bottom:.8rem}
+.kv{display:flex;gap:.6rem;font-size:.86rem;color:#d8d8d4;padding:.4rem 0;border-top:1px solid var(--line)}
+.kv i{color:var(--gold);width:18px;text-align:center;margin-top:.18rem}
+.missions{display:flex;flex-direction:column;gap:.8rem}
+.mission{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem 1.1rem;display:flex;gap:.9rem;transition:border-color .25s}
+.mission:hover{border-color:var(--line-strong)}
+.mission .mi{width:36px;height:36px;flex-shrink:0;border-radius:9px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--gold);display:grid;place-items:center}
+.mission h4{font-family:'Space Grotesk';font-size:.98rem;font-weight:600;margin-bottom:.2rem}
+.mission p{font-size:.88rem;color:#c6c6c1}
+.valo{margin-top:1.6rem;background:linear-gradient(120deg,rgba(255,210,63,.07),rgba(255,158,66,.05));border:1px solid var(--line-strong);border-radius:14px;padding:1.3rem 1.4rem}
+.valo h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem;color:var(--gold)}
+.valo p{font-size:.95rem;color:#e0e0db}
+.alt-cta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.7rem}
+
+/* ============ ABOUT ============ */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:1.6rem;align-items:start}
+.about-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem}
+.about-card h3{display:flex;align-items:center;gap:.6rem;font-size:1.1rem;font-weight:600;margin-bottom:.7rem}
+.about-card h3 i{color:var(--gold)}
+.about-card p{color:#cfcfca;font-size:.95rem;margin-bottom:.8rem}
+.method-demo{background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:.9rem 1rem;font-size:.88rem;margin-top:.4rem}
+.method-demo .lbl{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.4rem}
+.method-flow{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}
+.method-flow span{font-family:'JetBrains Mono';font-size:.72rem;background:var(--surface-2);border:1px solid var(--line);padding:.25rem .5rem;border-radius:6px;color:var(--gold)}
+.method-flow span:not(:last-child)::after{content:" →";color:var(--muted)}
+.amb-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.amb-list li{display:flex;gap:.6rem;font-size:.92rem;color:#d4d4cf}
+.amb-list i{color:var(--gold);margin-top:.22rem}
+.timeline{margin-top:1.2rem;border-left:1px solid var(--line);padding-left:1.1rem;display:flex;flex-direction:column;gap:.7rem}
+.tl-item{position:relative;font-size:.86rem;color:var(--muted)}
+.tl-item::before{content:"";position:absolute;left:-1.42rem;top:.45rem;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.tl-item b{color:#e2e2dd;font-weight:600;font-family:'Space Grotesk'}
+
+/* ============ CONTACT ============ */
+.contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.8rem;align-items:center}
+.contact-list{list-style:none;display:flex;flex-direction:column;gap:.2rem}
+.contact-list li{display:flex;align-items:center;gap:.9rem;padding:.7rem .2rem;border-bottom:1px solid var(--line)}
+.contact-list li:last-child{border-bottom:none}
+.contact-list .ci{width:38px;height:38px;flex-shrink:0;border-radius:10px;background:var(--surface);border:1px solid var(--line-strong);color:var(--gold);display:grid;place-items:center}
+.contact-list .meta{font-family:'JetBrains Mono';font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.contact-list a,.contact-list .val{text-decoration:none;color:var(--text);font-weight:500;font-size:.95rem}
+.contact-list a:hover{color:var(--gold)}
+.contact-cta{background:var(--surface);border:1px solid var(--line-strong);border-radius:16px;padding:1.6rem;text-align:center}
+.contact-cta h3{font-size:1.25rem;font-weight:600;margin-bottom:.5rem}
+.contact-cta p{color:var(--muted);font-size:.92rem;margin-bottom:1.1rem}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:2rem 0;text-align:center;color:var(--muted);font-size:.84rem}
+footer .brand{justify-content:center;margin-bottom:.6rem;color:var(--text)}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ============ REVEAL ============ */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  .nav-links{
+    position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(10,10,11,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
+  }
+  .nav-links.open{max-height:380px}
+  .nav-links a{padding:1rem 24px;border-radius:0;border-top:1px solid var(--line)}
+  .nav-links a.current::after{display:none}
+  .burger{display:block}
+  .hero-grid{grid-template-columns:1fr;gap:2rem}
+  .hero-photo{order:-1;justify-self:start}
+  .proj-board,.alt-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .skill-grid{grid-template-columns:1fr 1fr}
+  .stats-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .skill-grid{grid-template-columns:1fr}
+  .wrap,.nav-inner{padding-left:18px;padding-right:18px}
+  .hero h1{font-size:2.3rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#accueil" class="brand">
+      <span class="mark">IT</span>
+      <span>Ilias Trid<small>RÉSEAUX · CLOUD · CYBER</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <ul class="nav-links" id="navlinks">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#alternance">Alternance</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">BUT2 Réseaux &amp; Télécommunications · Cybersécurité</span>
+      <h1>Ilias <span class="accent">Trid</span></h1>
+      <p class="role">Alternant <b>Cloud &amp; Réseaux</b> chez Nivura — Monaco</p>
+      <p class="objective"><b>Mon objectif :</b> concevoir, déployer et fiabiliser des infrastructures cloud et réseau, puis évoluer vers les métiers de la sécurité et de la gouvernance (GRC).</p>
+      <p class="lead">Entre l'IUT Nice Côte d'Azur et l'alternance, j'apprends à transformer un besoin en solution concrète : une archi qui tient, supervisée, sécurisée et documentée.</p>
+      <p class="l3"><i class="fas fa-graduation-cap"></i><span>À la rentrée, je poursuis en <b>L3 MIASHS</b> (parcours MIAGE) à Sophia Antipolis — <b>tout en gardant mon alternance chez Nivura</b>. Objectif : croiser technique et gestion du risque SI.</span></p>
+      <div class="cta-row">
+        <a href="#projets" class="btn btn-primary"><i class="fas fa-folder-open"></i> Voir mes projets</a>
+        <a href="docs/Ilias_Trid_CV.pdf" target="_blank" class="btn btn-ghost"><i class="fas fa-file-arrow-down"></i> Télécharger le CV</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fas fa-paper-plane"></i> Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="ring"><img src="assets/photo.jpg" alt="Portrait d'Ilias Trid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="wrap"><div class="stats-inner">
+    <div class="stat"><div class="n">13</div><div class="l">projets</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">domaines</div></div>
+    <div class="stat"><div class="n">08/25</div><div class="l">alternance</div></div>
+    <div class="stat"><div class="n">L3</div><div class="l">MIASHS · 09/26</div></div>
+  </div></div>
+</div>
+
+<!-- ============ PROJETS ============ -->
+<section class="section" id="projets">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 — Réalisations</span>
+      <h2>Mes projets</h2>
+      <p>Lecture en deux temps : à gauche le <b>parcours académique</b> (SAÉ &amp; TP), à droite l'<b>alternance et le perso/pro</b>. On y voit ma progression — de la config réseau Cisco en première année jusqu'aux déploiements cloud autonomes en production. Filtrez par domaine pour cibler.</p>
+    </div>
+
+    <div class="filters reveal" id="filters">
+      <button class="chip active" data-f="all">Tous</button>
+      <button class="chip" data-f="reseau"><span class="dot" style="background:var(--c-reseau)"></span>Réseau</button>
+      <button class="chip" data-f="cloud"><span class="dot" style="background:var(--c-cloud)"></span>Cloud</button>
+      <button class="chip" data-f="cyber"><span class="dot" style="background:var(--c-cyber)"></span>Cybersécurité</button>
+      <button class="chip" data-f="dev"><span class="dot" style="background:var(--c-dev)"></span>Dev / Web</button>
+    </div>
+
+    <div class="proj-board">
+
+      <!-- ===== COLONNE A : ACADÉMIQUE ===== -->
+      <div class="proj-col">
+        <div class="col-head reveal">
+          <span class="ico"><i class="fas fa-graduation-cap"></i></span>
+          <div><h3>Parcours académique</h3><small>SAÉ &amp; TP — IUT Nice Côte d'Azur</small></div>
+        </div>
+        <div class="col-stack">
+
+          <article class="card reveal" data-themes="reseau" style="--barc:var(--c-reseau)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-reseau)"></span>Réseau</span></div><span class="sem">S2</span></div>
+            <h4>SAÉ 21 — Conception &amp; administration d'un réseau</h4>
+            <p>J'ai bâti une infrastructure segmentée de bout en bout : plan d'adressage IPv4/IPv6, VLAN, routage statique et dynamique (RIP/OSPF), sécurisation par ACL et services DHCP/DNS, le tout vérifié à l'analyseur.</p>
+            <div class="stack"><span>Cisco</span><span>Packet Tracer</span><span>VLAN</span><span>OSPF</span><span>ACL</span><span>Wireshark</span></div>
+            <div class="proofs">
+              <a class="proof" href="docs/SAE21_rapport.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Rapport</a>
+              <a class="proof" href="docs/SAE21_PacketTracer.pkt" download><i class="fas fa-diagram-project"></i> Packet Tracer</a>
+            </div>
+          </article>
+
+          <article class="card reveal" data-themes="reseau" style="--barc:var(--c-reseau)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-reseau)"></span>Réseau</span></div><span class="sem">S2</span></div>
+            <h4>SAÉ 22 — Étude de portée d'un réseau LoRa</h4>
+            <p>Étude radio de la portée LoRa selon l'environnement : bilan de liaison, calcul des pertes maximales tolérables et estimation des distances atteignables en bas débit longue portée.</p>
+            <div class="stack"><span>LoRa / LoRaWAN</span><span>Radiofréquences</span><span>Bilan de liaison</span><span>Propagation</span></div>
+            <div class="proofs"><a class="proof" href="docs/SAE22_LoRa_rapport.docx" download><i class="fas fa-file-word"></i> Rapport</a></div>
+          </article>
+
+          <article class="card reveal" data-themes="reseau dev" style="--barc:var(--c-reseau)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-reseau)"></span>Réseau</span><span class="tag-theme"><span class="dot" style="background:var(--c-dev)"></span>Dev</span></div><span class="sem">S2</span></div>
+            <h4>SAÉ 23/24 — Système de supervision (avec Thales Alenia)</h4>
+            <p>Conception d'un système orienté supervision dans un cadre industriel encadré : tests, simulation, reporting, prise en compte des contraintes de sécurité et d'ergonomie, puis restitution devant un jury.</p>
+            <div class="stack"><span>Supervision</span><span>Tests</span><span>Simulation</span><span>Reporting</span></div>
+            <div class="proofs"><a class="proof" href="docs/SAE23_Thales_rapport.docx" download><i class="fas fa-file-word"></i> Rapport</a></div>
+          </article>
+
+          <article class="card reveal" data-themes="dev" style="--barc:var(--c-dev)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-dev)"></span>Dev / Web</span></div><span class="sem">S2</span></div>
+            <h4>SAÉ 25 — Portfolio numérique</h4>
+            <p>Le site que vous lisez. Architecture en sections, hiérarchisation de l'information, intégration HTML/CSS/JS responsive et itérations UX à partir des retours pour en faire un vrai support de candidature.</p>
+            <div class="stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span><span>UX</span></div>
+            <div class="proofs"><a class="proof" href="#accueil"><i class="fas fa-eye"></i> Vous y êtes</a></div>
+          </article>
+
+          <article class="card reveal hidden-proj" data-themes="cyber" style="--barc:var(--c-cyber)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cyber)"></span>Cybersécurité</span></div><span class="sem">S3</span></div>
+            <h4>SAÉ 31 — Chaîne d'attaque complète</h4>
+            <p>Montée d'une kill chain de A à Z : exploitation d'une faille Samba (CVE-2017-7494), stabilisation d'un shell, pivoting réseau via tunnel Meterpreter vers une zone isolée, élévation de privilèges Root via GTFOBins.</p>
+            <div class="stack"><span>Metasploit</span><span>Meterpreter</span><span>Pivoting</span><span>CVE-2017-7494</span><span>GTFOBins</span></div>
+            <div class="proofs"><a class="proof" href="docs/SAE34_pentest_rapport.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Rapport</a></div>
+          </article>
+
+          <article class="card reveal hidden-proj" data-themes="cyber reseau" style="--barc:var(--c-cyber)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cyber)"></span>Cybersécurité</span><span class="tag-theme"><span class="dot" style="background:var(--c-reseau)"></span>Réseau</span></div><span class="sem">S4</span></div>
+            <h4>TP R4.Cyber.09 — Sécurité de la couche 2 (LAN)</h4>
+            <p>Travaux offensifs/défensifs sur le niveau 2 Cisco : MAC flooding, STP spoofing, VLAN hopping, DHCP spoofing et ARP poisoning, avec leurs contre-mesures, sur une maquette GNS3. Rapport de 27 pages mis en forme.</p>
+            <div class="stack"><span>GNS3</span><span>Cisco</span><span>Port-security</span><span>DHCP snooping</span><span>DAI</span><span>BPDU guard</span></div>
+            <div class="proofs">
+              <a class="proof" href="docs/TP_R4Cyber09_Protocole_des_Ombres.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Rapport — Le Protocole des Ombres</a>
+            </div>
+          </article>
+
+          <button class="show-more-btn" data-col="acad"><i class="fas fa-chevron-down"></i> 3 projets S3/S4 de plus</button>
+
+        </div>
+        <p class="col-note reveal">↳ Preuves : rapports PDF/Word et fichiers Packet Tracer téléchargeables.</p>
+      </div>
+
+      <!-- ===== COLONNE B : ALTERNANCE & PERSO/PRO ===== -->
+      <div class="proj-col">
+        <div class="col-head reveal">
+          <span class="ico"><i class="fas fa-briefcase"></i></span>
+          <div><h3>Alternance &amp; perso / pro</h3><small>Nivura (Monaco) + projets personnels</small></div>
+        </div>
+        <div class="col-stack">
+
+          <article class="card reveal" data-themes="cloud cyber" style="--barc:var(--c-cloud)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cloud)"></span>Cloud</span><span class="tag-theme"><span class="dot" style="background:var(--c-cyber)"></span>Cyber</span></div><span class="sem">PRO</span></div>
+            <h4>Système d'alerte on-call</h4>
+            <p>J'ai conçu un pipeline d'alerting 100 % serverless sur AWS — EventBridge → SQS → Lambda — avec notifications Teams via Power Automate et un routage par priorité client (P1/P2). J'ai aussi migré les anciens connecteurs O365 dépréciés vers les Workflows Power Automate.</p>
+            <div class="stack"><span>AWS</span><span>EventBridge</span><span>SQS</span><span>Lambda</span><span>CloudFormation</span><span>Python</span><span>Teams</span></div>
+            <div class="proofs"><span class="proof conf"><i class="fas fa-lock"></i> Confidentiel — Client MSP</span></div>
+          </article>
+
+          <article class="card reveal" data-themes="cloud" style="--barc:var(--c-cloud)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cloud)"></span>Cloud</span></div><span class="sem">PRO</span></div>
+            <h4>nivura-update-notifications</h4>
+            <p>Veille de versions entièrement serverless : surveillance automatisée de 8 services (GitLab CE, Vault, TFE, Keycloak, Guacamole, OPNsense, OpenVPN, BIND9) via Lambda Python, EventBridge Scheduler et SSM Parameter Store, avec alerte Teams dès qu'une mise à jour sort.</p>
+            <div class="stack"><span>Lambda</span><span>EventBridge Scheduler</span><span>SSM</span><span>Python 3.12</span><span>Scraping</span></div>
+            <div class="proofs"><span class="proof conf"><i class="fas fa-lock"></i> Confidentiel — Client MSP</span></div>
+          </article>
+
+          <article class="card reveal" data-themes="cloud" style="--barc:var(--c-cloud)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cloud)"></span>Cloud</span></div><span class="sem">PRO</span></div>
+            <h4>Migration de Terraform Enterprise sur ARM64</h4>
+            <p>L'agent TFE plantait sur ARM64 (« aws: not found »). J'ai isolé que le binaire manquait dans l'image, reconstruit une image Docker custom (aarch64) avec l'AWS CLI v2 et l'injection du certificat d'autorité interne, puis validé via les logs du worker.</p>
+            <div class="stack"><span>Terraform Enterprise</span><span>Docker</span><span>ARM64 / aarch64</span><span>AWS CLI</span><span>PKI / CA</span></div>
+            <div class="proofs"><span class="proof conf"><i class="fas fa-lock"></i> Confidentiel — Client MSP</span></div>
+          </article>
+
+          <article class="card reveal" data-themes="cloud cyber" style="--barc:var(--c-cloud)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cloud)"></span>Cloud</span><span class="tag-theme"><span class="dot" style="background:var(--c-cyber)"></span>Cyber</span></div><span class="sem">PRO</span></div>
+            <h4>Audit des alarmes CloudWatch &amp; supervision Wazuh</h4>
+            <p>Audit et refonte des alarmes CloudWatch (cohérence, seuils, réduction du bruit) et travail de supervision/SIEM avec Wazuh pour fiabiliser la détection et clarifier la chaîne d'alerte sur le parc.</p>
+            <div class="stack"><span>CloudWatch</span><span>Wazuh</span><span>SIEM</span><span>Supervision</span></div>
+            <div class="proofs"><span class="proof conf"><i class="fas fa-lock"></i> Confidentiel — Client MSP</span></div>
+          </article>
+
+          <article class="card reveal hidden-proj" data-themes="cloud" style="--barc:var(--c-cloud)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-cloud)"></span>Cloud</span></div><span class="sem">PRO</span></div>
+            <h4>Dashboards AWS — checks d'infra matinaux</h4>
+            <p>Tableaux de bord d'infrastructure pour les vérifications quotidiennes : état des ressources, santé des services et indicateurs clés réunis sur une vue unique pour gagner du temps au démarrage de la journée.</p>
+            <div class="stack"><span>AWS</span><span>CloudWatch</span><span>Dashboards</span><span>Observabilité</span></div>
+            <div class="proofs"><span class="proof conf"><i class="fas fa-lock"></i> Confidentiel — Client MSP</span></div>
+          </article>
+
+          <article class="card reveal hidden-proj" data-themes="dev" style="--barc:var(--c-dev)">
+            <div class="card-top"><div class="card-tags"><span class="tag-theme"><span class="dot" style="background:var(--c-dev)"></span>Dev / Data</span></div><span class="sem">PERSO</span></div>
+            <h4>Modélisation génétique — qpAdm</h4>
+            <p>Modélisation de mélanges de populations (admixture) sur données ADN ancien via qpAdm. Modèles reproductibles, automatisés en R/Python, publiés et documentés publiquement.</p>
+            <div class="stack"><span>qpAdm</span><span>R</span><span>Python</span><span>ADMIXTOOLS</span><span>Data modelling</span><span>Ancient DNA</span></div>
+            <div class="proofs">
+              <a class="proof" href="https://www.tiktok.com/@qp_journey" target="_blank"><i class="fab fa-tiktok"></i> @qp_journey</a>
+            </div>
+          </article>
+
+          <button class="show-more-btn" data-col="pro"><i class="fas fa-chevron-down"></i> 2 autres projets</button>
+
+        </div>
+        <p class="col-note reveal">↳ Projets pro anonymisés (clients confidentiels). Code &amp; schémas disponibles sur demande ou via GitHub.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPÉTENCES ============ -->
+<section class="section" id="competences">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 — Savoir-faire</span>
+      <h2>Mes compétences</h2>
+      <p>Découpées par domaine pour refléter mon vrai terrain de jeu : du câble au cloud, en passant par la sécurité. Chaque brique est mobilisée dans au moins un projet ci-dessus.</p>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-network-wired"></i> Réseau</h3>
+        <div class="skill-tags"><span>IPv4 / IPv6</span><span>Subnetting</span><span>VLAN</span><span>Routage statique</span><span>OSPF / RIP</span><span>ACL</span><span>STP</span><span>Cisco IOS</span><span>Wireshark</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fab fa-aws"></i> Cloud &amp; AWS</h3>
+        <div class="skill-tags"><span>EC2</span><span>RDS</span><span>VPC</span><span>Lambda</span><span>EventBridge</span><span>SQS</span><span>CloudWatch</span><span>SSM</span><span>IAM</span><span>Load Balancer</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-shield-halved"></i> Cybersécurité</h3>
+        <div class="skill-tags"><span>Pentest</span><span>Pivoting</span><span>Nmap</span><span>Wazuh / SIEM</span><span>Sécurité L2</span><span>Segmentation</span><span>OWASP</span><span>Threat modeling</span><span>Remédiation</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-server"></i> Système &amp; Linux</h3>
+        <div class="skill-tags"><span>Linux</span><span>Bash</span><span>Docker</span><span>ARM64 / aarch64</span><span>PKI / CA</span><span>SSH</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-code"></i> Dev &amp; données</h3>
+        <div class="skill-tags"><span>Python</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>PHP</span><span>SQL</span><span>Git</span><span>Bases de React</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-cubes"></i> IaC &amp; automatisation</h3>
+        <div class="skill-tags"><span>Terraform</span><span>TFE</span><span>CloudFormation</span><span>Serverless</span><span>Power Automate</span><span>Scripting</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-language"></i> Langues</h3>
+        <div class="lang-row"><span>Français</span><span class="lv">langue maternelle</span></div>
+        <div class="lang-row"><span>Italien</span><span class="lv">langue maternelle</span></div>
+        <div class="lang-row"><span>Anglais</span><span class="lv">B2 → C1</span></div>
+        <div class="lang-row"><span>Espagnol</span><span class="lv">B1</span></div>
+        <div class="lang-row"><span>Arabe</span><span class="lv">A2</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-people-group"></i> Soft skills</h3>
+        <div class="skill-tags"><span>Rigueur</span><span>Autonomie</span><span>Esprit d'équipe</span><span>Curiosité</span><span>Adaptabilité</span><span>Organisation</span><span>Documentation</span></div>
+      </div>
+      <div class="skill-card reveal">
+        <h3><i class="fas fa-toolbox"></i> Outils</h3>
+        <div class="skill-tags"><span>GNS3</span><span>Packet Tracer</span><span>VS Code</span><span>draw.io</span><span>Teams</span><span>vCloud</span></div>
+      </div>
+      <div class="skill-card full reveal">
+        <h3><i class="fas fa-certificate"></i> Badges AWS</h3>
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:.2rem">Badges obtenus via AWS Partner Network — vérifiables sur Credly.</p>
+        <div class="cert-grid">
+          <a href="https://www.credly.com/badges/75775fb8-0b38-44c6-93ea-0a455b225054" target="_blank" class="cert-badge">
+            <div style="width:40px;height:40px;flex-shrink:0;border-radius:8px;background:#1a2844;border:1.5px solid #4a6fa5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px;overflow:hidden">
+              <span style="font-size:.65rem;font-weight:900;color:#fff;font-family:'Space Grotesk',sans-serif;line-height:1">aws</span>
+              <span style="font-size:.36rem;color:#8fadd4;letter-spacing:.04em;font-family:monospace;line-height:1">TECHNICAL</span>
+              <span style="font-size:.36rem;color:#8fadd4;letter-spacing:.04em;font-family:monospace;line-height:1">ACCREDITED</span>
+              <div style="background:#2a4a7a;width:100%;text-align:center;padding:1px 0;margin-top:1px;border-radius:2px">
+                <span style="font-size:.3rem;color:#c5d8f0;letter-spacing:.04em;font-family:monospace">PARTNER</span>
+              </div>
+            </div>
+            <div>
+              <div class="cb-name">AWS Technical Accredited</div>
+              <div class="cb-level">Trained Partner · Credly →</div>
+            </div>
+          </a>
+          <a href="https://www.credly.com/badges/d0aa39a2-4e17-4df0-9f11-1e10fca8684a" target="_blank" class="cert-badge">
+            <div style="width:40px;height:40px;flex-shrink:0;border-radius:8px;background:#e8f7f0;border:1.5px solid #a8dcc0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:2px;overflow:hidden">
+              <span style="font-size:.6rem;font-weight:900;color:#232f3e;font-family:'Space Grotesk',sans-serif;line-height:1">aws</span>
+              <span style="font-size:.3rem;color:#232f3e;letter-spacing:.04em;font-family:monospace;line-height:1.2">KNOWLEDGE</span>
+              <span style="font-size:.28rem;color:#232f3e;font-family:monospace;line-height:1.1">END USER</span>
+              <div style="background:#e91e8c;width:100%;text-align:center;padding:1px 0;margin-top:1px">
+                <span style="font-size:.3rem;color:#fff;letter-spacing:.04em;font-family:monospace">TRAINED</span>
+              </div>
+            </div>
+            <div>
+              <div class="cb-name">AWS Knowledge: End User Computing</div>
+              <div class="cb-level">Trained · Credly →</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row reveal" style="margin-top:1.8rem">
+      <a href="#alternance" class="btn btn-primary"><i class="fas fa-briefcase"></i> Ces compétences en entreprise</a>
+      <a href="#projets" class="btn btn-ghost"><i class="fas fa-folder-open"></i> Les voir en action</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALTERNANCE ============ -->
+<section class="section alt" id="alternance">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 — Sur le terrain</span>
+      <h2>Mon alternance</h2>
+      <p>C'est ici que tout se relie. En arrivant, je n'avais jamais touché à AWS. Aujourd'hui, j'y déploie des systèmes en production, en autonomie — voici comment.</p>
+    </div>
+    <div class="alt-grid">
+      <div class="company reveal">
+        <div class="logo">N</div>
+        <h3>Nivura</h3>
+        <div class="sub">// MSP AWS · Monaco · depuis le 25/08/2025</div>
+        <p>Nivura est un prestataire de services managés (MSP) AWS basé à Monaco. L'entreprise opère et sécurise des infrastructures cloud et hybrides (AWS, vCloud) pour des administrations et grands comptes de la région.</p>
+        <div class="kv"><i class="fas fa-user-tie"></i><span>Poste : alternant Cloud &amp; Réseaux</span></div>
+        <div class="kv"><i class="fas fa-cloud"></i><span>Périmètre : AWS, vCloud, supervision, sécurité</span></div>
+        <div class="kv"><i class="fas fa-calendar-check"></i><span>Poursuivie pendant la L3 MIASHS</span></div>
+      </div>
+      <div>
+        <div class="missions">
+          <div class="mission reveal"><span class="mi"><i class="fas fa-bell"></i></span><div><h4>Supervision &amp; alerting</h4><p>Conception de pipelines d'alerte serverless et fiabilisation des alarmes pour réduire le bruit et accélérer la détection d'incidents.</p></div></div>
+          <div class="mission reveal"><span class="mi"><i class="fas fa-cubes"></i></span><div><h4>Cloud &amp; Infrastructure as Code</h4><p>Déploiements AWS, automatisation serverless et travail sur Terraform/TFE, jusqu'à la résolution de blocages d'environnement en production.</p></div></div>
+          <div class="mission reveal"><span class="mi"><i class="fas fa-shield-halved"></i></span><div><h4>Sécurité &amp; supervision</h4><p>Segmentation, contrôle d'accès, supervision SIEM (Wazuh) et prise en compte des enjeux de sécurité dans les architectures.</p></div></div>
+          <div class="mission reveal"><span class="mi"><i class="fas fa-book"></i></span><div><h4>Documentation technique</h4><p>Rédaction de documentation claire et anonymisée : contexte, hypothèses, alternatives et leçons retenues, réutilisable par l'équipe.</p></div></div>
+        </div>
+        <div class="valo reveal">
+          <h3>Ce que l'alternance m'apporte</h3>
+          <p>Un cadre exigeant où la fiabilité n'est pas négociable. J'y ai gagné de l'autonomie technique, le réflexe de documenter et la capacité à porter un projet du besoin jusqu'à la production. C'est ce fil — « zéro expérience AWS → un système autonome en prod » — qui structure ma soutenance.</p>
+        </div>
+        <div class="alt-cta">
+          <a href="#projets" class="btn btn-primary"><i class="fas fa-diagram-project"></i> Voir les projets liés</a>
+          <a href="#contact" class="btn btn-ghost"><i class="fas fa-comments"></i> Échanger sur mon alternance</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ À PROPOS ============ -->
+<section class="section" id="apropos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — Qui je suis</span>
+      <h2>À propos</h2>
+      <p>Au-delà du CV : ma façon de travailler, ce que je vise, et le chemin qui m'a mené jusqu'ici.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <h3><i class="fas fa-screwdriver-wrench"></i> Ma méthode, en vrai</h3>
+        <p>Je ne crois pas aux solutions sorties d'un chapeau. Devant un problème, je reproduis, j'isole, je corrige, puis je documente. Un exemple concret :</p>
+        <div class="method-demo">
+          <span class="lbl">// cas réel — migration TFE sur ARM64</span>
+          L'agent plantait sur <b>« aws: not found »</b>. Plutôt que de bricoler, j'ai isolé la cause (binaire absent de l'image aarch64), reconstruit une image Docker custom avec l'AWS CLI v2 + le CA interne, puis <b>validé via les logs du worker</b> avant de remettre en service.
+          <div class="method-flow"><span>Reproduire</span><span>Isoler</span><span>Corriger</span><span>Valider</span><span>Documenter</span></div>
+        </div>
+      </div>
+      <div class="about-card reveal">
+        <h3><i class="fas fa-compass"></i> Où je vais</h3>
+        <p>Je construis une trajectoire à la croisée de la technique et de la gestion du risque. Mon honnêteté fait partie de ma méthode : je sais distinguer ce que je maîtrise seul de ce où j'ai encore besoin d'être accompagné — et c'est exactement là que je veux progresser.</p>
+        <ul class="amb-list">
+          <li><i class="fas fa-arrow-right"></i> Court terme : approfondir cloud &amp; sécurité en production.</li>
+          <li><i class="fas fa-arrow-right"></i> L3 MIASHS — parcours MIAGE pour relier SI et risque.</li>
+          <li><i class="fas fa-arrow-right"></i> Cap visé : Consultant GRC , à terme l'international et l'entrepreneuriat.</li>
+        </ul>
+        <div class="timeline">
+          <div class="tl-item"><b>Depuis 08/2025</b> · Alternant Cloud &amp; Réseaux — Nivura, Monaco</div>
+          <div class="tl-item"><b>2023 → 2025</b> · Jobs étudiants (Carrefour City, restauration, hôtellerie) — sens du service &amp; du rythme</div>
+          <div class="tl-item"><b>2024 → 2026</b> · BUT2 R&amp;T, spécialité cybersécurité — IUT Nice Côte d'Azur</div>
+          <div class="tl-item"><b>Rentrée 09/26</b> · L3 MIASHS — parcours MIAGE — Sophia Antipolis</div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row reveal" style="margin-top:1.6rem">
+      <a href="docs/Ilias_Trid_CV.pdf" target="_blank" class="btn btn-primary"><i class="fas fa-file-arrow-down"></i> Mon CV complet</a>
+      <a href="#contact" class="btn btn-ghost"><i class="fas fa-paper-plane"></i> Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section alt" id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">05 — Restons en contact</span>
+      <h2>Contact</h2>
+      <p>Une opportunité, un projet ou simplement une question ? Je réponds avec plaisir.</p>
+    </div>
+    <div class="contact-grid">
+      <ul class="contact-list reveal">
+        <li><span class="ci"><i class="fas fa-envelope"></i></span><div><div class="meta">E-mail</div><a href="mailto:ilias.trid@etu.unice.fr">ilias.trid@etu.unice.fr</a></div></li>
+        <li><span class="ci"><i class="fas fa-phone"></i></span><div><div class="meta">Téléphone</div><span class="val">06 51 79 71 57</span></div></li>
+        <li><span class="ci"><i class="fas fa-location-dot"></i></span><div><div class="meta">Localisation</div><span class="val">Roquebrune-Cap-Martin · Sophia-Antipolis</span></div></li>
+        <li><span class="ci"><i class="fab fa-linkedin-in"></i></span><div><div class="meta">LinkedIn</div><a href="https://www.linkedin.com/in/iliastrid07" target="_blank">in/iliastrid07</a></div></li>
+        <li><span class="ci"><i class="fab fa-github"></i></span><div><div class="meta">GitHub</div><a href="https://github.com/Trid-Ilias" target="_blank">github.com/Trid-Ilias</a></div></li>
+      </ul>
+      <div class="contact-cta reveal">
+        <h3>Travaillons ensemble</h3>
+        <p>Disponible pour échanger sur l'alternance, le cloud ou la cybersécurité.</p>
+        <a href="mailto:ilias.trid@etu.unice.fr" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Envoyer un e-mail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#accueil" class="brand"><span class="mark">IT</span><span>Ilias Trid</span></a>
+    <div>BUT2 Réseaux &amp; Télécommunications · Alternant Cloud chez Nivura · © 2026</div>
+  </div>
+</footer>
+
+<script>
+// --- Burger ---
+const burger=document.getElementById('burger');
+const navlinks=document.getElementById('navlinks');
+burger.addEventListener('click',()=>{
+  const open=navlinks.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',String(open));
+});
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navlinks.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');
+}));
+
+// --- Active section on scroll ---
+const sections=[...document.querySelectorAll('section[id]')];
+const navMap={};
+navlinks.querySelectorAll('a').forEach(a=>navMap[a.getAttribute('href').slice(1)]=a);
+const navObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      Object.values(navMap).forEach(a=>a.classList.remove('current'));
+      const a=navMap[e.target.id];if(a)a.classList.add('current');
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+sections.forEach(s=>navObs.observe(s));
+
+// --- Reveal on scroll ---
+const revObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revObs.unobserve(e.target);}});
+},{rootMargin:'0px 0px -8% 0px',threshold:.05});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// --- Show more buttons ---
+document.querySelectorAll('.show-more-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const col = btn.closest('.proj-col');
+    col.querySelectorAll('.hidden-proj').forEach(c => {
+      c.classList.remove('hidden-proj');
+      setTimeout(() => c.classList.add('in'), 20);
+    });
+    btn.style.display = 'none';
+  });
+});
+
+// --- Project filters ---
+const chips=document.querySelectorAll('.chip');
+const cards=document.querySelectorAll('.card[data-themes]');
+chips.forEach(chip=>chip.addEventListener('click',()=>{
+  chips.forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  const f=chip.dataset.f;
+  cards.forEach(card=>{
+    if(card.classList.contains('hidden-proj')) return; // don't touch hidden cards
+    const show=(f==='all')||card.dataset.themes.split(' ').includes(f);
+    card.style.display=show?'':'none';
+  });
+}));
+</script>
+</body>
+</html>
